@@ -7,8 +7,10 @@ import com.example.springchatapp.app.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -32,6 +34,21 @@ public class UserService {
         userRepository.save(createUser);
 
         return UserDto.fromEntity(createUser);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<User> findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    @Transactional(readOnly = true)
+    public boolean isUsernameTaken(String username) {
+        return userRepository.existsByUsername(username);
+    }
+
+    @Transactional(readOnly = true)
+    public boolean isEmailTaken(String email) {
+        return userRepository.existsByEmail(email);
     }
 
     private void validateUser(UserCreateReqDto param) {
