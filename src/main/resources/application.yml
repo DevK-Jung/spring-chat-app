@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: spring-chat-app
+  datasource:
+    url: jdbc:mysql://localhost:33067?serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowMultiQueries=true
+    username: "root"
+    password: "1234"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      pool-name: AxdxHikariCP
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 600000         # 10?
+      max-lifetime: 1800000        # 30?
+      connection-timeout: 30000    # 30?
+      auto-commit: true
+
+
+  # JPA Configuration
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        highlight_sql: true # Hibernate 6 ???
+
+  # Thymeleaf Configuration
+  thymeleaf:
+    cache: false
+
+# Logging
+logging:
+  level:
+    org.springframework.web.socket: DEBUG
+    org.springframework.messaging: DEBUG
