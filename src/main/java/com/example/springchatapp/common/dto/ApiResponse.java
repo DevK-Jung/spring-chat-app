@@ -19,4 +19,9 @@ public class ApiResponse<T> {
                 .data(data)
                 .build();
     }
+
+    public static <T> ApiResponse<T> success() {
+        return success(null);
+    }
+
 }
