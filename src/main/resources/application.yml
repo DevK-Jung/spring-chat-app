@@ -5,7 +5,7 @@ spring:
   application:
     name: spring-chat-app
   datasource:
-    url: jdbc:mysql://localhost:33067?serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowMultiQueries=true
+    url: jdbc:mysql://localhost:33067/mydb?serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowMultiQueries=true
     username: "root"
     password: "1234"
     driver-class-name: com.mysql.cj.jdbc.Driver
